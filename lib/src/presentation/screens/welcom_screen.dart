@@ -44,19 +44,19 @@ class _WelcomeWidget extends StatelessWidget {
           color: Colors.amber,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(38), topRight: Radius.circular(38))),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             "Welcome",
             style: TextStyle(fontWeight: FontWeight.w800, fontSize: 35),
           ),
-          Text(
+          const Text(
             "Voluptate dolore irure est eiusmod quis qui proident tempor.",
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Row(
@@ -65,14 +65,20 @@ class _WelcomeWidget extends StatelessWidget {
                 text: "Sign In",
                 color: Colors.black,
                 textColor: Colors.white,
+                onTap: () {
+                  Navigator.pushNamed(context, "/login");
+                },
               ),
-              SizedBox(
+              const SizedBox(
                 width: 30,
               ),
               CustomButtom(
                 text: "Register",
                 color: Colors.white,
                 textColor: Colors.black,
+                onTap: () {
+                  Navigator.pushNamed(context, "/register");
+                },
               ),
             ],
           )
@@ -86,11 +92,13 @@ class CustomButtom extends StatelessWidget {
   final String text;
   final Color color;
   final Color textColor;
+  final Function()? onTap; // ? opcional
   const CustomButtom({
     super.key,
     required this.text,
     required this.color,
     required this.textColor,
+    this.onTap,
   });
 
   @override
@@ -99,7 +107,7 @@ class CustomButtom extends StatelessWidget {
       height: 60,
       width: 150,
       child: ElevatedButton(
-        onPressed: () {},
+        onPressed: onTap,
         style: ButtonStyle(
             backgroundColor: MaterialStatePropertyAll(color),
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
