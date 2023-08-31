@@ -30,6 +30,8 @@ class _WelcomeWidget extends StatelessWidget {
     required this.size,
   });
 
+  tmp() {}
+
   final double size;
 
   @override
@@ -54,7 +56,33 @@ class _WelcomeWidget extends StatelessWidget {
             "Voluptate dolore irure est eiusmod quis qui proident tempor.",
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
           ),
+          CustomWidget(),
         ],
+      ),
+    );
+  }
+}
+
+class CustomWidget extends StatelessWidget {
+  const CustomWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 60,
+      width: 150,
+      child: ElevatedButton(
+        onPressed: () {},
+        style: ButtonStyle(
+            backgroundColor: const MaterialStatePropertyAll(Colors.black),
+            shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(50)))),
+        child: const Text(
+          "Sign In",
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+        ),
       ),
     );
   }
@@ -85,7 +113,7 @@ class _AnimationWidget extends StatelessWidget {
           const Text(
             "B E E R C A F E",
             style: TextStyle(fontWeight: FontWeight.w300, fontSize: 25),
-          )
+          ),
         ],
       ),
     );
