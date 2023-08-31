@@ -56,16 +56,41 @@ class _WelcomeWidget extends StatelessWidget {
             "Voluptate dolore irure est eiusmod quis qui proident tempor.",
             style: TextStyle(fontWeight: FontWeight.w400, fontSize: 20),
           ),
-          CustomWidget(),
+          SizedBox(
+            height: 5,
+          ),
+          Row(
+            children: [
+              CustomButtom(
+                text: "Sign In",
+                color: Colors.black,
+                textColor: Colors.white,
+              ),
+              SizedBox(
+                width: 30,
+              ),
+              CustomButtom(
+                text: "Register",
+                color: Colors.white,
+                textColor: Colors.black,
+              ),
+            ],
+          )
         ],
       ),
     );
   }
 }
 
-class CustomWidget extends StatelessWidget {
-  const CustomWidget({
+class CustomButtom extends StatelessWidget {
+  final String text;
+  final Color color;
+  final Color textColor;
+  const CustomButtom({
     super.key,
+    required this.text,
+    required this.color,
+    required this.textColor,
   });
 
   @override
@@ -76,12 +101,13 @@ class CustomWidget extends StatelessWidget {
       child: ElevatedButton(
         onPressed: () {},
         style: ButtonStyle(
-            backgroundColor: const MaterialStatePropertyAll(Colors.black),
+            backgroundColor: MaterialStatePropertyAll(color),
             shape: MaterialStatePropertyAll(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50)))),
-        child: const Text(
-          "Sign In",
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 19),
+        child: Text(
+          text,
+          style: TextStyle(
+              fontWeight: FontWeight.bold, fontSize: 19, color: textColor),
         ),
       ),
     );
@@ -103,7 +129,7 @@ class _AnimationWidget extends StatelessWidget {
       child: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 25),
+            padding: const EdgeInsets.symmetric(horizontal: 55),
             child: Lottie.asset('assets/animations/beer.json'),
           ),
           const Text(
